@@ -14,6 +14,7 @@ module.exports = class {
   }
   
   * props(){ yield* ['has_video','language', 'author', 'is_first', 'text', 'external_links', 'rating', 'published'];}
+
   toString(){
     let result = '';
     for( let prop of this.props()){
