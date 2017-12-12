@@ -1,4 +1,7 @@
-module.exports = class Filter {
+/** @enum {String} */
+const COMPARATOR = { GT: '>', EQ: '=', LT: '<' }
+const arrayOrString = (val) => Array.isArray(val) ? val : [val]
+class Filter {
   constructor(...args){
     console.log(this,args)
   }
@@ -30,4 +33,8 @@ module.exports = class Filter {
   get [Symbol.toStringTag]() {
     return 'Filter'
   }
+}
+
+module.exports = {
+  COMPARATOR, arrayOrString, Filter
 }
