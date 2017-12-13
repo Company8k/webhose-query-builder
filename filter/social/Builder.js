@@ -1,10 +1,10 @@
-/**Social Filters*/
-class SocialFilter {
-  constructor({
-    performance_score, social
-  }){
-    this.performance_score = performance_score;
-    this.social = social || {};
+const Filter = require('./Filter');
+/** @const {Symbol} */
+const FILTER_KEY = Symbol('Filter');
+/** Social Filter Builder */
+module.exports = class {
+  constructor(){
+    this[FILTER_KEY] = new Filter({});
   }
   /**
    * A virality score for news and blogs posts only.
@@ -72,26 +72,4 @@ class SocialFilter {
     this.social.vk ? this.social.vk.shares = shares : this.social.vk = { shares }; return this;
   }
   
-}
-
-
-
-/*
- * performance_score
-
-
-social.gplus.shares
-
-social.pinterest.shares
-
-social.linkedin.shares
-
-social.stumbledupon.shares
-
-social.vk.shares
-
- */
-
-module.exports = {
-  SocialFilter
 }
