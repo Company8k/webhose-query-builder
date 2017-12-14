@@ -1,40 +1,22 @@
 /** @enum {String} */
 const COMPARATOR = { GT: '>', EQ: '=', LT: '<' }
 const arrayOrString = (val) => Array.isArray(val) ? val : [val]
-class Filter {
-  constructor(...args){
-    console.log(this,args)
-  }
-  
-  formatProp(prop, value){
-    if(!value){return ''}
-    return `${prop}:${value}`;
-  }
-  formatArrayJoin(prop, value){
-    console.log(value)
-    if(!value){return}
-    console.log(value.length)
-    if(value.length == 1){
-      return `${prop}:${value[0]}`
+
+const formatProp = (prop, value) => ` ${prop}:${value}`;
+const formatArray = (p,v) => v.length == 1 ? formatProp(p,v) : ` ${p}:(${v.join(' OR ')})`;
+
+const formatArrayJoin = (p,v) => {
+  if(v.length ==1) return formatProp(p,v);
+  let result = ' (';
+  for( let val of v){
+    result += `${p}:${val}`;
+    if( v.indexOf(val) < v.length-1){
+      result += ' OR '
     }
-    let result = '(';
-    for( let val of value){
-      console.log(val, value.indexOf(val), value.length)
-      result += `${prop}:${val}`;
-      if( value.indexOf(val) < value.length-1){
-        result += ' OR '
-      }
-    }
-    return result += ')'
   }
-  /**
-   * @return {String}
-   */
-  get [Symbol.toStringTag]() {
-    return 'Filter'
-  }
+  return result += ')'
 }
 
 module.exports = {
-  COMPARATOR, arrayOrString, Filter
+  COMPARATOR, arrayOrString, formatProp, formatArray, formatArrayJoin
 }

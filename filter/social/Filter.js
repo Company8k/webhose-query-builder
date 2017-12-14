@@ -1,4 +1,4 @@
-,/**Social Filters*/
+/**Social Filters*/
 module.exports = class {
   constructor({
     performance_score, social

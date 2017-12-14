@@ -1,5 +1,5 @@
-
-class EntitiesSentimentFilter {
+/** Entites/Sentitmet Filter */
+module.exports = class {
   construcor({ person, organization, location }){
     this.person = person;
     this.organization = organization;
@@ -21,19 +21,9 @@ class EntitiesSentimentFilter {
   }
 }
 /*
- * person
-
-organization
-
-location
-
-[entity].[sentiment]
-Find an entity with a sentiment context attached to it.
-person.positive:"obama"
-organization.negative:"apple"
-organization.neutral:"google"
+ * [entity].[sentiment]
+ * Find an entity with a sentiment context attached to it.
+ * person.positive:"obama"
+ * organization.negative:"apple"
+ * organization.neutral:"google"
  */
-
-module.exports = {
-  EntitiesSentitmentFilter
-}

@@ -1,3 +1,4 @@
+const { formatProp, formatArray, formatArrayJoin } = require('../lib');
 /** Post Filter Content */
 module.exports = class {
   constructor({
@@ -18,15 +19,16 @@ module.exports = class {
   toString(){
     let result = '';
     for( let prop of this.props()){
-      console.info('prop',prop, result);
       if(this[prop] === undefined)continue;
       switch(prop){
         case 'text':
-          result += ` text:${this[prop]} `; break;
-        case 'has_video':
-          result += ` has_video:${this[prop]}`; break;
+          result += formatArray(prop, this[prop]); break;
+        case 'language':
+          result += formatArrayJoin(prop, this[prop]); break;
+        case 'external_links':
+          result += formatProp(prop, this[prop].replace(':','\:').replace('/','\/')); break;
         default:
-          continue;
+          result += formatProp(prop, this[prop]);
       }
     }
     return result;

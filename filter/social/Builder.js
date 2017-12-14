@@ -11,7 +11,7 @@ module.exports = class {
    * The score ranges between 0-10, where 0 means that the post didn't do well at all, i.e rarely or was never shared, to 10 which means that the post was on fire, shared thousands of times on Facebook. 
    * Search for news or blog posts with performance score higher than 8 (highly viral): apple performance_score:>8
    */
-  performance_score(s){ this.performance_score = s; return this;}
+  performance_score(s){ this[FILTER_KEY].performance_score = s; return this;}
   /**
    * Return posts filtered by the number of Facebook likes. 
    * Return posts with more than 10 Facebook likes: social.facebook.likes:>10 
@@ -24,7 +24,7 @@ module.exports = class {
    * @param {Object}
    * @return {this}
    */
-  facebook(f){ this.social.facebook = f; return this}
+  facebook(f){ this[FILTER_KEY].social.facebook = f; return this}
   /**
    * Return posts filtered by the number of Google Plus shares. 
    * Return posts with more than 10 Google Plus shares: social.gplus.shares:>10
@@ -32,7 +32,7 @@ module.exports = class {
    * @return {this}
    */
   gplus(shares){
-    this.social.gplus ? this.social.gplus.shares = shares : this.social.gplus = { shares }; return this
+    this[FILTER_KEY].social.gplus ? this[FILTER_KEY].social.gplus.shares = shares : this[FILTER_KEY].social.gplus = { shares }; return this
   }
   /**
    * Return posts filtered by the number of Pinterest shares. 
@@ -41,7 +41,7 @@ module.exports = class {
    * @return {this}
    */
   pinterest(shares){
-    this.social.pinterest ? this.social.pinterest.shares = shares : this.social.pinterest = { shares }; return this;
+    this[FILTER_KEY].social.pinterest ? this[FILTER_KEY].social.pinterest.shares = shares : this[FILTER_KEY].social.pinterest = { shares }; return this;
   }
   //TODO gt,lt as param
   /**
@@ -51,7 +51,7 @@ module.exports = class {
    * @return {this}
    */
   linkedin(shares){
-    this.social.linkedin ? this.social.linkedin.shares = shares : this.social.linkedin = { shares }; return this;
+    this[FILTER_KEY].social.linkedin ? this[FILTER_KEY].social.linkedin.shares = shares : this[FILTER_KEY].social.linkedin = { shares }; return this;
   }
   /**
    * Return posts filtered by the number of Stumbledupon shares. 
@@ -60,7 +60,7 @@ module.exports = class {
    * @return {this}
    */
   stumbledupon(shares){
-    this.social.stumbledupon ? this.social.stumbledupon.shares = shares : this.social.stumbledupon = { shares }; return this;
+    this[FILTER_KEY].social.stumbledupon ? this[FILTER_KEY].social.stumbledupon.shares = shares : this[FILTER_KEY].social.stumbledupon = { shares }; return this;
   }
   /**
    * Return posts filtered by the number of VK shares. 
@@ -69,7 +69,10 @@ module.exports = class {
    * @return {this}
    */
   vk(shares){
-    this.social.vk ? this.social.vk.shares = shares : this.social.vk = { shares }; return this;
+    this[FILTER_KEY].social.vk ? this[FILTER_KEY].social.vk.shares = shares : this[FILTER_KEY].social.vk = { shares }; return this;
   }
-  
+  /**
+   * @return {Filter}
+   */
+  build(){ return this[FILTER_KEY];}
 }
