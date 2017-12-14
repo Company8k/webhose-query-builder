@@ -1,5 +1,8 @@
 const { formatProp, formatArray, formatArrayJoin } = require('../lib');
-/** Post Filter Content */
+/**
+ * Post Filter Content
+ * @class
+ */
 module.exports = class {
   constructor({
     language, author, text, has_video, external_links, is_first, rating, published
