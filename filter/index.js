@@ -2,7 +2,7 @@ const PostBuilder = require('./post/Builder');
 const SiteBuilder = require('./site/Builder');
 const SocialBuilder = require('./social/Builder');
 const ThreadBuilder = require('./thread/Builder');
-
+/** @module filter */
 module.exports = class {
   constructor(q){
     this.q = q;
