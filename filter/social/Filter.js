@@ -1,3 +1,4 @@
+const { formatProp } = require('../lib');
 /**Social Filters*/
 module.exports = class {
   constructor({
@@ -18,6 +19,17 @@ module.exports = class {
   
   toString(){
     let result = '';
+    for( let prop of this.props()){
+      let [ root, network, value ] = prop.split('.');
+      if(network !== undefined && value !== undefined){
+        let socialObject = this[root][network];
+        if(socialObject && socialObject[value]){
+          result += formatProp(prop, socialObject[value]);
+        }
+      } else if(this[prop] !== undefined){
+        result += formatProp(prop,this[prop]);
+      }
+    }
     return result;
   }
 }

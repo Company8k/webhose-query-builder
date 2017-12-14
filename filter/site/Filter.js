@@ -28,8 +28,6 @@ module.exports = class {
         case 'site':
         case 'site_category':
           result += formatArrayJoin(prop, this[prop]); break;
-        case 'thread.country':
-          result += formatProp(prop, this.thread.country); break;
         default:
           result += formatProp(prop, this[prop]);
       }
