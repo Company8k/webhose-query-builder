@@ -3,7 +3,7 @@ const { formatProp, formatArray, formatArrayJoin } = require('../lib');
  * Post Filter Content
  * @class
  */
-module.exports = class {
+module.exports = class PostFilter{
   constructor({
     language, author, text, has_video, external_links, is_first, rating, published
   }){
@@ -37,25 +37,3 @@ module.exports = class {
     return result;
   }
 }
-
-/*
-(language:french OR language:italian)
-
-text:(apple OR android)
-
-external_links
-
-Search for posts that linked to LinkedIn (note that both the slashes and colons are prefixed by a backslash):
-external_links:https\:\/\/www.linkedin.com*
-is_first
-
-is_first:true
-rating
-
-Return all the posts with rating greater than 0:
-rating:>0
-published
-
-Return posts published after Thu, 30 Mar 2017 09:16:28 GMT:
-published:>1490865388
- */
