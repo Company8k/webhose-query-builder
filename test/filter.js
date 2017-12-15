@@ -1,4 +1,4 @@
-const Filter = require('../filter')
+const Filter = require('../lib/filter')
 
 
 let filter = new Filter('jj');

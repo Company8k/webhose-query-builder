@@ -30,4 +30,4 @@ deploy:
     - script:
       code: |
         echo $NPM_RC > .npmrc
-        npm publish
+        npm publish --access public

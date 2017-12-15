@@ -41,3 +41,6 @@ test
 
 # Docs
 docs
+
+# wercker
+wercker.yml
