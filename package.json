@@ -12,18 +12,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pcullin-ratio/webhose-nodejs.git"
+    "url": "https://github.com/Company8k/webhose-query-builder.git"
   },
   "keywords": [
     "webhose.io",
     "node"
   ],
-  "author": "Paul Cullin",
+  "author": "NT<nt@eigh.tk>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pcullin-ratio/webhose-nodejs/issues"
+    "url": "https://github.com/Company8k/webhose-query-builder/issues"
   },
-  "homepage": "https://github.com/pcullin-ratio/webhose-nodejs",
+  "homepage": "https://github.com/Company8k/webhose-query-builder",
   "devDependencies": {
     "chai": "^2.1.1",
     "istanbul": "^0.3.8",
