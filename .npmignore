@@ -38,3 +38,6 @@ shippable.yml
 
 # Test folder
 test
+
+# Docs
+docs
