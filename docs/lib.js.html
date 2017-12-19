@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: lib.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,39 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: lib.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @enum {String} */
+const COMPARATOR = { GT: '>', EQ: '=', LT: '&lt;' }
+const arrayOrString = (val) => Array.isArray(val) ? val : [val]
 
+const formatProp = (prop, value) => ` ${prop}:${value}`;
+const formatArray = (p,v) => v.length == 1 ? formatProp(p,v) : ` ${p}:(${v.join(' OR ')})`;
 
-    <h3> </h3>
+const formatArrayJoin = (p,v) => {
+  if(v.length ==1) return formatProp(p,v);
+  let result = ' (';
+  for( let val of v){
+    result += `${p}:${val}`;
+    if( v.indexOf(val) &lt; v.length-1){
+      result += ' OR '
+    }
+  }
+  return result += ')'
+}
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = {
+  COMPARATOR, arrayOrString, formatProp, formatArray, formatArrayJoin
+}</code></pre>
+        </article>
+    </section>
 
 
 

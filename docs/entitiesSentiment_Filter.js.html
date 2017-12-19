@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: entitiesSentiment/Filter.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,47 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: entitiesSentiment/Filter.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Entites/Sentitmet Filter */
+module.exports = class {
+  construcor({ person, organization, location }){
+    this.person = person;
+    this.organization = organization;
+    this.location = location;
+  }
+  /**
+   * @generator
+   * @yields {String} prop
+   */
+  * props(){
+    yield* ['person','organization','location']
+  }
+  /**
+   * @return {String}
+   */
+  toString(){
+    let result = '';
+    return result;
+  }
+}
+/*
+ * [entity].[sentiment]
+ * Find an entity with a sentiment context attached to it.
+ * person.positive:"obama"
+ * organization.negative:"apple"
+ * organization.neutral:"google"
+ */
+</code></pre>
+        </article>
+    </section>
 
 
 

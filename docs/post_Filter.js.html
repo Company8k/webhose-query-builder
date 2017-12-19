@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: post/Filter.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,57 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: post/Filter.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const { formatProp, formatArray, formatArrayJoin } = require('../lib');
+/**
+ * Post Filter Content
+ */
+class PostFilter{
+  constructor({
+    language, author, text, has_video, external_links, is_first, rating, published
+  }){
+    this.has_video = has_video;
+    this.language = language;
+    this.author = author;
+    this.is_first = is_first;
+    this.text = text;
+    this.external_links = external_links;
+    this.rating = rating;
+    this.published = published;
+  }
+  
+  * props(){ yield* ['has_video','language', 'author', 'is_first', 'text', 'external_links', 'rating', 'published'];}
 
+  toString(){
+    let result = '';
+    for( let prop of this.props()){
+      if(this[prop] === undefined)continue;
+      switch(prop){
+        case 'text':
+          result += formatArray(prop, this[prop]); break;
+        case 'language':
+          result += formatArrayJoin(prop, this[prop]); break;
+        case 'external_links':
+          result += formatProp(prop, this[prop].replace(':','\:').replace('/','\/')); break;
+        default:
+          result += formatProp(prop, this[prop]);
+      }
+    }
+    return result;
+  }
+}
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = PostFilter</code></pre>
+        </article>
+    </section>
 
 
 
