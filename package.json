@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/Company8k/webhose-query-builder/issues"
   },
-  "homepage": "https://github.com/Company8k/webhose-query-builder",
+  "homepage": "https://company8k.github.io/webhose-query-builder",
   "devDependencies": {
     "chai": "^2.1.1",
     "istanbul": "^0.3.8",
