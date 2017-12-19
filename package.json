@@ -1,6 +1,6 @@
 {
   "name": "@8k/webhose-query-builder",
-  "version": "0.0.1-beta.0",
+  "version": "0.1.0",
   "description": "webhose.io query builder",
   "main": "lib/index.js",
   "directories": {
