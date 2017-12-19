@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: filter/post/Builder.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: filter/post/Builder.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const { arrayOrString, COMPARATOR } = require('../lib');
+const Filter = require('./Filter');
+const FILTER_KEY = Symbol('Filter');
+/** [Builder]{@link PostFilter} */
+class PostFilterBuilder {
+  /**
+   * Can be constructed by { @link WebhoseQueryBuilder }
+   */
+  constructor(){
+    this[FILTER_KEY] = new Filter({});
+  }
+  /**
+   * The language of the post. The default is any.
+   *  Find posts in French or Italian: (language:french OR language:italian)
+   * @param {(Array|String)}
+   * @return {this}
+   */
+  language(lang){ this[FILTER_KEY].language = arrayOrString(lang); return this}
+  /**
+   * Return posts written by a specific author
+   * Find posts written by Admin: author:Admin
+   * @param {String} author
+   * @return {this}
+   */
+  author(a){ this[FILTER_KEY].author = a; return this};
+  //TODO get method, and above concat with text, or maybe not needed. Depends on formatter
+  /**
+   * A textual Boolean query describing the keywords that should (or shouldn’t) appear in the post text. text:(apple OR android)
+   * @param {String|Array} text
+   * @return {this}
+   */
+  text(t){ this[FILTER_KEY].text = t; return this;}
+  /**
+   * A Boolean parameter that specifies if to search only for posts that contain a video. has_video:true
+   * @param {Boolean} has_vide
+   * @return {this}
+   */
+  has_video(b){ this[FILTER_KEY].has_video = b; return this;}
+  /**
+   * Search for posts that included links to another site.
+   * Search for posts that linked to LinkedIn (note that both the slashes and colons are prefixed by a backslash):
+   * external_links:https\:\/\/www.linkedin.com*
+   * @param {Array} eL - unescaped Links
+   * @return {PostFilterBuilder} this
+   */
+  external_links(eL){ this[FILTER_KEY].external_links = arrayOrString(eL); return this}
+  /**
+   * A Boolean parameter that specifies if to search only on the first post (exclude the comments) is_first:true
+   * @param {Boolean} is_first
+   * @return {this}
+   */
+  is_first(f){ this[FILTER_KEY].is_first = f; return this}
+  /**
+   * For review posts, the rating parameter provides the star rating for the review, a floating number between 0.0 to 5.0.
+   * Return all the posts with rating greater than 0: rating:>0
+   * @param {Number}
+   * @param {@link COMPARATOR}
+   * @return {this}
+   */
+  rating(r,comp=COMPARATOR.GT){ this[FILTER_KEY].rating = `${comp}${r}`; return this}
+  /**
+   * A time-stamp (in milliseconds) enable you to filter posts that were published before or after certain date/time.
+   * Return posts published after Thu, 30 Mar 2017 09:16:28 GMT: published:>1490865388
+   * @param {(number|Date)}
+   * @param {@link COMPARATOR}
+   * @return {this}
+   */
+  published(p, comp=COMPARATOR.GT){ this[FILTER_KEY].published = `${comp}${p}`; return this;}
+  /**
+   * Returns the underlying filter Object
+   * @return {PostFilter}
+   */
+  build(){ return this[FILTER_KEY];}
+}
+
+/**
+ * Module Exports
+ * @see PostFilterBuilder
+ * @module filter/post
+ */
+module.exports = PostFilterBuilder;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-filter.html">filter</a></li><li><a href="module-filter_entitiesSentiment.html">filter/entitiesSentiment</a></li><li><a href="module-filter_post.html">filter/post</a></li></ul><h3>Classes</h3><ul><li><a href="EntityFilter.html">EntityFilter</a></li><li><a href="EntitySentimentFilterBuilder.html">EntitySentimentFilterBuilder</a></li><li><a href="module.html#.exports">exports</a></li><li><a href="PostFilter.html">PostFilter</a></li><li><a href="PostFilterBuilder.html">PostFilterBuilder</a></li><li><a href="Sentiment.html">Sentiment</a></li><li><a href="SiteFilter.html">SiteFilter</a></li><li><a href="SiteFilterBuilder.html">SiteFilterBuilder</a></li><li><a href="SocialFilter.html">SocialFilter</a></li><li><a href="SocialFilterBuilder.html">SocialFilterBuilder</a></li><li><a href="WebhoseQuery.html">WebhoseQuery</a></li></ul><h3>Global</h3><ul><li><a href="global.html#COMPARATOR">COMPARATOR</a></li><li><a href="global.html#FILTER_KEY">FILTER_KEY</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Dec 19 2017 12:55:25 GMT+0000 (UTC)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
