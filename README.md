@@ -13,10 +13,8 @@ filter.thread(); //Thread filter builder
 let url = `http://url.prefix${filter.query}`;
 
 ```
-
-### Docs
 ---
-[see](https://company8k.github.io/webhose-query-builder/)
+see [docs](https://company8k.github.io/webhose-query-builder/) for more info
 
 ### Licence
 ---
